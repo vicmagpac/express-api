@@ -46,7 +46,9 @@ export default class User extends Model {
 
     // adicionando hook antes de salvar o registro
     this.addHook('beforeSave', async (user) => {
-      user.password_hash = await bcryptjs.hash(user.password, 8);
+      if (user.password) {
+        user.password_hash = await bcryptjs.hash(user.password, 8);
+      }
     });
 
     return this;
