@@ -1,5 +1,7 @@
 import Sequelize, { Model } from 'sequelize';
 
+require('dotenv').config();
+
 export default class Foto extends Model {
   static init(sequelize) {
     super.init({
@@ -19,6 +21,12 @@ export default class Foto extends Model {
           notEmpty: {
             msg: 'Campo obrigatorio',
           },
+        },
+      },
+      url: {
+        type: Sequelize.VIRTUAL,
+        get() {
+          return `${process.env.BASE_URL}/images/${this.getDataValue('filename')}`;
         },
       },
     }, {
