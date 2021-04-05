@@ -29,7 +29,14 @@ class AuthController {
       expiresIn: '1d',
     });
 
-    return res.json({ token });
+    return res.json({
+      token,
+      user: {
+        nome: user.nome,
+        id,
+        email,
+      },
+    });
   }
 }
 
