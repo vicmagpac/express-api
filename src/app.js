@@ -31,7 +31,7 @@ class App {
       extended: true,
     }));
     this.app.use(express.json());
-    this.app.use(express.static(resolve(__dirname, 'uploads')));
+    this.app.use(express.static(resolve(__dirname, '..', 'uploads')));
   }
 
   routes() {
