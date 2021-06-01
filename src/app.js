@@ -16,6 +16,8 @@ import authRoutes from './routes/authRoutes';
 import alunoRoutes from './routes/alunoRoutes';
 import fotoRoutes from './routes/fotoRoutes';
 
+const delay = require('express-delay');
+
 class App {
   constructor() {
     this.app = express();
@@ -24,6 +26,7 @@ class App {
   }
 
   middlewares() {
+    this.app.use(delay(3000));
     this.app.use(cors());
     this.app.use(helmet());
 
